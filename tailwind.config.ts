@@ -10,8 +10,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        serif: ['Playfair Display', 'serif'],
+        script: ['Dancing Script', 'cursive'],
         body: ['Montserrat', 'sans-serif'],
-        headline: ['Great Vibes', 'cursive'],
+        headline: ['Dancing Script', 'cursive'],
         code: ['monospace'],
       },
       colors: {

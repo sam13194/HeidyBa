@@ -6,12 +6,11 @@ export default function HeroSection() {
     <section id="home" className="relative h-screen min-h-[600px] w-full flex items-center justify-center text-center text-white">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://placehold.co/1920x1080"
+          src="/images/background.jpeg"
           alt="Heidy Bega en el escenario"
           fill
           className="object-cover"
           priority
-          data-ai-hint="singer portrait"
         />
         <div className="absolute inset-0 bg-black/50"></div>
       </div>

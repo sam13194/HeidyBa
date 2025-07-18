@@ -2,18 +2,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 
 const photos = [
-  { src: "https://placehold.co/600x800", alt: "Heidy Vega en concierto", hint: "singer concert", className: "row-span-2" },
-  { src: "https://placehold.co/600x400", alt: "Heidy Vega en sesión de fotos", hint: "singer photoshoot" },
-  { src: "https://placehold.co/600x400", alt: "Detalle de micrófono", hint: "microphone stage" },
-  { src: "https://placehold.co/600x800", alt: "Heidy Vega sonriendo", hint: "singer smiling", className: "row-span-2" },
-  { src: "https://placehold.co/600x400", alt: "Público en un concierto", hint: "concert crowd" },
-  { src: "https://placehold.co/600x400", alt: "Heidy Vega en backstage", hint: "singer backstage" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 10.02.41 PM.jpeg", alt: "Heidy Bega en presentación", className: "row-span-2" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 10.02.42 PM.jpeg", alt: "Heidy Bega en sesión de fotos" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 10.02.45 PM.jpeg", alt: "Heidy Bega en evento" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 10.02.47 PM.jpeg", alt: "Heidy Bega sonriendo", className: "row-span-2" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 10.03.16 PM.jpeg", alt: "Heidy Bega en concierto" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 9.48.36 PM.jpeg", alt: "Heidy Bega profesional" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 9.49.09 PM.jpeg", alt: "Heidy Bega en evento especial" },
+  { src: "/images/misimagenes/WhatsApp Image 2025-07-17 at 10.11.34 PM.jpeg", alt: "Heidy Bega backstage" },
 ];
 
-const videos = [
-  { id: "dQw4w9WgXcQ", title: "Videoclip Oficial" },
-  { id: "3tmd-ClpJxA", title: "Presentación en Vivo" },
-];
 
 export default function GallerySection() {
   return (
@@ -30,29 +28,14 @@ export default function GallerySection() {
                         src={photo.src}
                         alt={photo.alt}
                         fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        data-ai-hint={photo.hint}
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
                 </div>
             ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {videos.map((video) => (
-            <Card key={video.id} className="overflow-hidden shadow-xl border-none rounded-lg">
-              <CardContent className="p-0 aspect-video">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
       </div>
     </section>
   );

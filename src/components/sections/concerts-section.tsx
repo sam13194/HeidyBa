@@ -12,7 +12,7 @@ export default function ConcertsSection() {
   ];
 
   return (
-    <section id="dates" className="py-20 md:py-32 bg-white">
+    <section id="dates" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-5xl md:text-6xl font-headline text-primary mb-12">
           Conciertos

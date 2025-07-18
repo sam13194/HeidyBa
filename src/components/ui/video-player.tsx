@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 import { Play, ExternalLink } from "lucide-react";
 
 // Componente para manejar errores de carga de imagen
@@ -38,12 +37,10 @@ function VideoThumbnail({ src, alt, videoId }: { src: string; alt: string; video
   }
   
   return (
-    <Image
+    <img
       src={fallbackUrls[currentUrlIndex]}
       alt={alt}
-      fill
-      sizes="64px"
-      className="object-cover"
+      className="w-full h-full object-cover"
       onError={handleError}
     />
   );

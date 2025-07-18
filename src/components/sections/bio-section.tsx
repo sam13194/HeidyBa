@@ -1,11 +1,13 @@
 import Image from "next/image";
+import { ScrollAnimation } from "@/components/ui/scroll-animation";
 
 export default function BioSection() {
   return (
     <section id="bio" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl transform md:hover:scale-105 transition-transform duration-500">
+          <ScrollAnimation direction="left">
+            <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl transform md:hover:scale-105 transition-transform duration-500">
             <Image
               src="/images/misimagenes/WhatsApp Image 2025-07-17 at 10.07.08 PM.jpeg"
               alt="Retrato personal de Heidy Bega"
@@ -14,7 +16,9 @@ export default function BioSection() {
               className="object-cover"
             />
           </div>
-          <div className="text-center md:text-left">
+          </ScrollAnimation>
+          <ScrollAnimation direction="right" delay={0.2}>
+            <div className="text-center md:text-left">
             <h2 className="text-5xl md:text-6xl font-headline text-primary mb-6">
               Mi Historia
             </h2>
@@ -35,7 +39,8 @@ export default function BioSection() {
                 A los 13 años, audicionó exitosamente para <strong>La Voz Kids Colombia</strong>, consolidando su participación en el reconocido programa. Desde entonces, su visibilidad ha crecido a nivel nacional, llevándola a participar activamente en numerosos eventos a nivel departamental.
               </p>
             </div>
-          </div>
+            </div>
+          </ScrollAnimation>
         </div>
       </div>
     </section>

@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "@/components/layout/header";
 import HeroSection from "@/components/sections/hero-section";
 import MusicSection from "@/components/sections/music-section";
@@ -10,8 +12,12 @@ import RepertoireSection from "@/components/sections/repertoire-section";
 import Footer from "@/components/layout/footer";
 import SocialIcons from "@/components/layout/social-icons";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { SimpleFloatingPlayer } from "@/components/ui/simple-floating-player";
+import { useState } from "react";
 
 export default function Home() {
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
       <ThemeToggle />
@@ -21,13 +27,20 @@ export default function Home() {
         <MusicSection />
         <BioSection />
         <AboutSection />
-        <GallerySection />
+        <GallerySection onModalStateChange={setIsGalleryModalOpen} />
         <ConcertsSection />
         <RepertoireSection />
         <ContactSection />
       </main>
       <SocialIcons />
       <Footer />
+      <SimpleFloatingPlayer
+        audioSrc="/audio/heidy-demo.mp3"
+        title="Demo Vocal"
+        artist="Heidy Bega"
+        artwork="/images/logo-removebg-preview (1).png"
+        hideWhenModalOpen={isGalleryModalOpen}
+      />
     </div>
   );
 }

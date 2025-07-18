@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { VideoPlayer } from "@/components/ui/video-player";
+import { ScrollAnimation } from "@/components/ui/scroll-animation";
 
 const videos = [
   { 
@@ -19,16 +20,19 @@ export default function MusicSection() {
   return (
     <section id="music" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-5xl md:text-6xl font-headline text-center mb-12 text-primary">
-          Mi Música
-        </h2>
+        <ScrollAnimation direction="up">
+          <h2 className="text-5xl md:text-6xl font-headline text-center mb-12 text-primary">
+            Mi Música
+          </h2>
+        </ScrollAnimation>
         
         {/* Videos de YouTube */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-serif text-center mb-8 text-foreground">
-            Videos Musicales
-          </h3>
-          <VideoPlayer videos={videos} />
+        <ScrollAnimation direction="up" delay={0.2}>
+          <div className="mb-16">
+            <h3 className="text-3xl font-serif text-center mb-8 text-foreground">
+              Videos Musicales
+            </h3>
+            <VideoPlayer videos={videos} />
           
           {/* Botón suscribirse al canal */}
           <div className="text-center mt-8">
@@ -44,28 +48,8 @@ export default function MusicSection() {
               Suscríbete a mi Canal
             </Link>
           </div>
-        </div>
-
-        {/* Spotify Player */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h3 className="text-3xl font-serif text-center mb-8 text-foreground">
-            Escucha en Spotify
-          </h3>
-          <Card className="overflow-hidden shadow-xl border-none rounded-lg">
-            <CardContent className="p-0">
-              <iframe
-                style={{ borderRadius: "12px" }}
-                src="https://open.spotify.com/embed/artist/3Sg3RAl7gR2VexiM1KSh7p?utm_source=generator&theme=0"
-                width="100%"
-                height="352"
-                allowFullScreen
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                title="Spotify Player for Heidy Bega"
-              ></iframe>
-            </CardContent>
-          </Card>
-        </div>
+          </div>
+        </ScrollAnimation>
 
 
       </div>

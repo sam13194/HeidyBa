@@ -27,7 +27,7 @@ export default function MusicSection() {
                 allowFullScreen
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
-                title="Spotify Player for Heidy Vega"
+                title="Spotify Player for Heidy Bega"
               ></iframe>
             </CardContent>
           </Card>

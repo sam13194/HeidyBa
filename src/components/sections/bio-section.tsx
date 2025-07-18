@@ -8,7 +8,7 @@ export default function BioSection() {
           <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl transform md:hover:scale-105 transition-transform duration-500">
             <Image
               src="https://placehold.co/800x1000"
-              alt="Retrato personal de Heidy Vega"
+              alt="Retrato personal de Heidy Bega"
               fill
               className="object-cover"
               data-ai-hint="singer personal"
@@ -20,7 +20,7 @@ export default function BioSection() {
             </h2>
             <div className="space-y-4 text-lg text-foreground/80">
               <p>
-                Desde la vibrante frontera de Cúcuta, Heidy Vega le canta al amor y al desamor con la fuerza de una mujer que conoce sus raíces. Su voz, un torrente de pasión y autenticidad, narra historias que conectan con el alma del pueblo.
+                Desde la vibrante frontera de Cúcuta, Heidy Bega le canta al amor y al desamor con la fuerza de una mujer que conoce sus raíces. Su voz, un torrente de pasión y autenticidad, narra historias que conectan con el alma del pueblo.
               </p>
               <p>
                 Cada canción es un pedazo de su corazón, una melodía que nace de vivencias propias y ajenas, transformando el sentimiento popular en arte. Heidy no solo canta, cuenta las historias que todos llevamos dentro.

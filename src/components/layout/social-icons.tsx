@@ -27,7 +27,7 @@ export default function SocialIcons() {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Heidy Vega en ${link.name}`}
+            aria-label={`Heidy Bega en ${link.name}`}
             className="w-12 h-12 bg-foreground/80 hover:bg-primary text-background rounded-full flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 backdrop-blur-sm"
           >
             <link.icon className="w-6 h-6" />

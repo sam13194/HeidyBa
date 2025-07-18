@@ -7,7 +7,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="https://placehold.co/1920x1080"
-          alt="Heidy Vega en el escenario"
+          alt="Heidy Bega en el escenario"
           fill
           className="object-cover"
           priority
@@ -17,7 +17,7 @@ export default function HeroSection() {
       </div>
       <div className="relative z-10 px-4 flex flex-col items-center">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline drop-shadow-lg">
-          Heidy Vega
+          Heidy Bega
         </h1>
         <p className="mt-4 text-xl md:text-2xl font-body mb-8 max-w-2xl mx-auto drop-shadow-md">
           Canciones que nacen del corazón

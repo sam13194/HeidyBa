@@ -4,8 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: 'Heidy Vega | La nueva voz de la música popular',
-  description: 'Sitio web oficial de Heidy Vega. Escucha su música, conoce su historia y entérate de sus próximos conciertos. Canciones que nacen del corazón.',
+  title: 'Heidy Bega | La nueva voz de la música popular',
+  description: 'Sitio web oficial de Heidy Bega. Escucha su música, conoce su historia y entérate de sus próximos conciertos. Canciones que nacen del corazón.',
 };
 
 export default function RootLayout({

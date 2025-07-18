@@ -25,7 +25,7 @@ export default function Footer() {
           </form>
         </div>
         <div className="mt-12 pt-8 border-t border-border/50 text-center text-muted-foreground text-sm">
-          <p>&copy; {currentYear} Heidy Vega. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} Heidy Bega. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

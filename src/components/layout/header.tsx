@@ -41,14 +41,14 @@ export default function Header() {
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             <Link href="#home" className="flex items-center">
               <Image
                 src="/images/logo-removebg-preview (1).png"
                 alt="Logo oficial de Heidy Bega"
                 width={220}
                 height={80}
-                className="h-20 w-auto"
+                className="h-12 sm:h-16 md:h-20 w-auto"
               />
             </Link>
             
@@ -58,7 +58,7 @@ export default function Header() {
               size="icon" 
               onClick={() => setSidebarOpen(true)} 
               aria-label="Abrir menú"
-              className="z-50"
+              className="relative z-50 bg-background/80 backdrop-blur-sm border shadow-sm hover:bg-background/90"
             >
               <Menu className="h-6 w-6" />
             </Button>
@@ -69,7 +69,7 @@ export default function Header() {
       {/* Overlay */}
       {sidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
+          className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 backdrop-blur-sm"
           onClick={closeSidebar}
         />
       )}
@@ -77,7 +77,7 @@ export default function Header() {
       {/* Sidebar */}
       <div
         className={cn(
-          'fixed top-0 right-0 h-full w-80 bg-background shadow-2xl z-50 transform transition-transform duration-300 ease-in-out',
+          'fixed top-0 right-0 h-full w-full max-w-sm bg-background shadow-2xl z-50 transform transition-transform duration-300 ease-in-out',
           sidebarOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
@@ -89,7 +89,7 @@ export default function Header() {
               alt="Logo oficial de Heidy Bega"
               width={160}
               height={60}
-              className="h-12 w-auto"
+              className="h-10 sm:h-12 w-auto"
             />
             <Button variant="ghost" size="icon" onClick={closeSidebar} aria-label="Cerrar menú">
               <X className="h-6 w-6" />
@@ -104,7 +104,7 @@ export default function Header() {
                   <a
                     href={item.href}
                     onClick={closeSidebar}
-                    className="block text-xl font-medium text-foreground hover:text-primary transition-colors duration-200 py-2"
+                    className="block text-lg sm:text-xl font-medium text-foreground hover:text-primary transition-colors duration-200 py-3 px-2 rounded-lg hover:bg-muted/50 active:bg-muted"
                   >
                     {item.name}
                   </a>

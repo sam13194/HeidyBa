@@ -38,7 +38,7 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggleTheme}
       aria-label={`Cambiar a modo ${isDark ? 'claro' : 'oscuro'}`}
-      className="fixed top-4 right-4 z-50 bg-background/80 backdrop-blur-sm border shadow-lg hover:bg-background/90"
+      className="fixed top-4 left-4 z-50 bg-background/80 backdrop-blur-sm border shadow-lg hover:bg-background/90"
     >
       {isDark ? (
         <Sun className="h-5 w-5" />

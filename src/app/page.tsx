@@ -10,12 +10,10 @@ import RepertoireSection from "@/components/sections/repertoire-section";
 import Footer from "@/components/layout/footer";
 import SocialIcons from "@/components/layout/social-icons";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { SnapScroll } from "@/components/ui/snap-scroll";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <SnapScroll />
       <ThemeToggle />
       <Header />
       <main>

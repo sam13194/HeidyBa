@@ -35,21 +35,33 @@ export interface ConcertDate {
 }
 
 export interface SiteContent {
-  heroTitle?: string;
-  heroSubtitle?: string;
-  bioContent?: string;
-  aboutContent?: string;
-  contactInfo?: {
-    email?: string;
-    phone?: string;
-    social?: {
-      youtube?: string;
-      instagram?: string;
-      facebook?: string;
-      tiktok?: string;
+  heroSection: {
+    title: string;
+    subtitle: string;
+    backgroundImage: string;
+  };
+  aboutSection: {
+    title: string;
+    description: string;
+    image: string;
+  };
+  contact: {
+    email: string;
+    phone: string;
+    address: string;
+    socialMedia: {
+      instagram: string;
+      facebook: string;
+      youtube: string;
+      tiktok: string;
     };
   };
-  updatedAt: number;
+  videos: Array<{
+    title: string;
+    videoId: string;
+    thumbnail: string;
+  }>;
+  updatedAt?: number;
 }
 
 // Audio tracks

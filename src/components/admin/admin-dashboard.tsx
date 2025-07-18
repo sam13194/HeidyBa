@@ -33,6 +33,7 @@ interface AdminDashboardProps {
 
 export default function AdminDashboard({ user }: AdminDashboardProps) {
   const [activeTab, setActiveTab] = useState('overview');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [stats, setStats] = useState({
     audioTracks: 0,
     galleryImages: 0,
@@ -71,70 +72,107 @@ export default function AdminDashboard({ user }: AdminDashboardProps) {
     await logOut();
   };
 
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Image
-              src="/images/logo-removebg-preview (1).png"
-              alt="Heidy Bega Logo"
-              width={80}
-              height={40}
-              className="h-8 w-auto"
-            />
-            <div className="border-l border-border pl-4">
-              <h1 className="text-xl font-headline text-primary">
-                Panel de Administración
-              </h1>
-            </div>
-          </div>
+  const menuItems = [
+    { id: 'overview', label: 'Overview', icon: BarChart3 },
+    { id: 'audio', label: 'Audio', icon: Music },
+    { id: 'gallery', label: 'Galería', icon: Images },
+    { id: 'concerts', label: 'Fechas', icon: Calendar },
+    { id: 'content', label: 'Contenido', icon: Settings },
+  ];
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-sm">
-              <UserIcon className="w-4 h-4" />
-              <span className="hidden sm:inline">{user.displayName || user.email}</span>
-            </div>
-            <Button 
-              variant="ghost" 
+  return (
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar */}
+      <div className={`${sidebarCollapsed ? 'w-16' : 'w-64'} transition-all duration-300 bg-muted/20 border-r border-border flex flex-col`}>
+        {/* Sidebar Header */}
+        <div className="p-4 border-b border-border">
+          <div className="flex items-center justify-between">
+            {!sidebarCollapsed && (
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/images/logo-removebg-preview (1).png"
+                  alt="Heidy Bega Logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-auto"
+                />
+                <h1 className="text-lg font-headline text-primary">Admin</h1>
+              </div>
+            )}
+            <Button
+              variant="ghost"
               size="icon"
-              onClick={handleLogOut}
-              className="text-muted-foreground hover:text-foreground"
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+              className="ml-auto"
             >
-              <LogOut className="w-4 h-4" />
+              {sidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
             </Button>
           </div>
         </div>
-      </header>
+
+        {/* Navigation */}
+        <nav className="flex-1 p-2">
+          <div className="space-y-1">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+                    activeTab === item.id 
+                      ? 'bg-primary text-primary-foreground' 
+                      : 'hover:bg-muted text-muted-foreground hover:text-foreground'
+                  }`}
+                  title={sidebarCollapsed ? item.label : ''}
+                >
+                  <Icon className="w-5 h-5 flex-shrink-0" />
+                  {!sidebarCollapsed && <span className="text-sm font-medium">{item.label}</span>}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* User Info & Logout */}
+        <div className="p-2 border-t border-border">
+          <div className={`flex items-center gap-3 p-3 rounded-lg ${sidebarCollapsed ? 'justify-center' : ''}`}>
+            <UserIcon className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+            {!sidebarCollapsed && (
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium truncate">{user.displayName || 'Admin'}</p>
+                <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+              </div>
+            )}
+          </div>
+          <Button
+            variant="ghost"
+            size={sidebarCollapsed ? "icon" : "sm"}
+            onClick={handleLogOut}
+            className={`w-full ${sidebarCollapsed ? 'h-10' : 'justify-start'} text-muted-foreground hover:text-foreground`}
+            title={sidebarCollapsed ? 'Cerrar sesión' : ''}
+          >
+            <LogOut className="w-4 h-4" />
+            {!sidebarCollapsed && <span className="ml-2">Cerrar sesión</span>}
+          </Button>
+        </div>
+      </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5 lg:w-fit lg:grid-cols-5">
-            <TabsTrigger value="overview" className="flex items-center gap-2">
-              <BarChart3 className="w-4 h-4" />
-              <span className="hidden sm:inline">Overview</span>
-            </TabsTrigger>
-            <TabsTrigger value="audio" className="flex items-center gap-2">
-              <Music className="w-4 h-4" />
-              <span className="hidden sm:inline">Audio</span>
-            </TabsTrigger>
-            <TabsTrigger value="gallery" className="flex items-center gap-2">
-              <Images className="w-4 h-4" />
-              <span className="hidden sm:inline">Galería</span>
-            </TabsTrigger>
-            <TabsTrigger value="concerts" className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              <span className="hidden sm:inline">Fechas</span>
-            </TabsTrigger>
-            <TabsTrigger value="content" className="flex items-center gap-2">
-              <Settings className="w-4 h-4" />
-              <span className="hidden sm:inline">Contenido</span>
-            </TabsTrigger>
-          </TabsList>
+      <div className="flex-1 flex flex-col">
+        {/* Top Header */}
+        <header className="h-16 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex items-center px-6">
+          <h2 className="text-xl font-headline text-primary">
+            {menuItems.find(item => item.id === activeTab)?.label || 'Panel de Administración'}
+          </h2>
+        </header>
 
-          <TabsContent value="overview" className="space-y-6">
+        {/* Content Area */}
+        <div className="flex-1 p-6 overflow-auto">
+          <div className="max-w-7xl mx-auto">
+
+            {activeTab === 'overview' && (
+              <div className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -217,24 +255,19 @@ export default function AdminDashboard({ user }: AdminDashboardProps) {
                 </ul>
               </CardContent>
             </Card>
-          </TabsContent>
+              </div>
+            )}
 
-          <TabsContent value="audio">
-            <AudioManager />
-          </TabsContent>
+            {activeTab === 'audio' && <AudioManager />}
 
-          <TabsContent value="gallery">
-            <GalleryManager />
-          </TabsContent>
+            {activeTab === 'gallery' && <GalleryManager />}
 
-          <TabsContent value="concerts">
-            <ConcertManager />
-          </TabsContent>
+            {activeTab === 'concerts' && <ConcertManager />}
 
-          <TabsContent value="content">
-            <ContentManager />
-          </TabsContent>
-        </Tabs>
+            {activeTab === 'content' && <ContentManager />}
+
+          </div>
+        </div>
       </div>
     </div>
   );

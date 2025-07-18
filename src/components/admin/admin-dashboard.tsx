@@ -14,7 +14,11 @@ import {
   LogOut, 
   User as UserIcon,
   BarChart3,
-  Upload
+  Upload,
+  Menu,
+  X,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import Image from 'next/image';
 import { getAudioTracks, getGalleryImages, getConcertDates } from '@/lib/database';
